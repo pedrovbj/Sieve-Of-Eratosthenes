@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <pthread.h>
 
 typedef struct info_pos {
@@ -98,7 +99,7 @@ void get_next(info_pos_t *info) {
     *info = data.cur_pos;
     
     if(data.cur_pos.end >= data.max_num) {
-        for(i = 0; i < data.max_num-1; i++) {
+        for(i = 0; i <= sqrt(data.max_num); i++) {
             if(!number[i] && (i+2 > data.cur_pos.prime)) {
                 data.cur_pos.prime = i+2;
                 data.cur_pos.pos = 0;
@@ -107,7 +108,7 @@ void get_next(info_pos_t *info) {
                 break;
             }
         }
-        if(i == data.max_num-1) {
+        if(i >= floor(sqrt(data.max_num))) {
             data.cur_pos.pos = -1;
         }
     } else {

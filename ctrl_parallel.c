@@ -55,14 +55,14 @@ int main(int argc, char **argv) {
         pthread_join(thread[i], &res);
     }
 
-    long j = 0;
-    for(i = 0; i < data.max_num-1; i++) {
-        if(!number[i]) {
-            // printf("%ld\t", i+2);
-            j++;
-        }
-    }
-    printf ("\n%ld\n", j);
+    // long j = 0;
+    // for(i = 0; i < data.max_num-1; i++) {
+    //     if(!number[i]) {
+    //         // printf("%ld\t", i+2);
+    //         j++;
+    //     }
+    // }
+    // printf ("\n%ld\n", j);
 
     pthread_mutex_destroy(&control.next_mutex);
     free(number);

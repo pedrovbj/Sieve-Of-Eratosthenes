@@ -5,13 +5,13 @@
 
 typedef struct info_pos {
     int prime;
-    int pos;
-    int end;
+    long pos;
+    long end;
 } info_pos_t;
 
 typedef struct info {
     int num_threads;
-    int max_num;
+    long max_num;
     int count;
     info_pos_t cur_pos;
 } info_t;
@@ -55,23 +55,23 @@ int main(int argc, char **argv) {
         pthread_join(thread[i], &res);
     }
 
-    // int j = 0;
-    // for(i = 0; i < data.max_num-1; i++) {
-    //     if(!number[i]) {
-    //         printf("%ld\t", i+2);
-    //         j++;
-    //     }
-    // }
-    // printf ("\n%d\n", j);
+    long j = 0;
+    for(i = 0; i < data.max_num-1; i++) {
+        if(!number[i]) {
+            // printf("%ld\t", i+2);
+            j++;
+        }
+    }
+    printf ("\n%ld\n", j);
 
     pthread_mutex_destroy(&control.next_mutex);
-    // free(number);
+    free(number);
     pthread_exit(NULL);
     return 0;
 }
 
 void *check_prime(void *arg) {
-    int i;
+    long i;
     info_pos_t info;
 
     info.pos = 0;
@@ -94,7 +94,7 @@ void *check_prime(void *arg) {
 }
 
 void get_next(info_pos_t *info) {
-    int i;
+    long i;
 
     *info = data.cur_pos;
     

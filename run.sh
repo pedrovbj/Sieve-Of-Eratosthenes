@@ -130,7 +130,7 @@ do
 done 
 
 
-#Executions for 100.000.000 size vector------------------------------
+#Executions for 1.000.000.000 size vector------------------------------
 
 #Sequential
 for i in `seq 1 10`;
@@ -177,7 +177,7 @@ done
 #Data
 for i in `seq 1 10`;
 do
-    { time ./data.exe 1000000000 6; } 2>> ./output/data/data-1000000000
+    { time ./data.exe 1000000000 6; } 2>> ./output/data/data-1000000000-6threads.txt
 done
 
 #8 threads-----------------------------
@@ -191,5 +191,5 @@ done
 #Data
 for i in `seq 1 10`;
 do
-    { time ./data.exe 1000000000 8; } 2>> ./output/data/data-1000000000
+    { time ./data.exe 1000000000 8; } 2>> ./output/data/data-1000000000-8threads.txt
 done
